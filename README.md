@@ -55,7 +55,7 @@ Method369 ("we," "our," or "us") is an Android app. Method369 is a 369 manifesta
 ## Data Sharing
 
 ### Family Groups
-- Method369 does not use MyFamilyTracker-style family groups unless explicitly described in this policy.
+- Method369 does not use family groups unless explicitly described in this policy.
 - If this app includes pairing, sharing, or collaboration features, data is shared only with the people or services required for the feature you choose.
 - You control feature use through the app settings, permissions, account controls, or platform settings.
 
