@@ -29,7 +29,7 @@
   <main>
     <article>
       <h1>Method369 — Privacy Policy</h1>
-      <p><strong>Effective Date:</strong> 2026-05-17 <strong>Last Updated:</strong> 2026-11-08 <strong>Version:</strong> 1.0.0</p>
+      <p><strong>Effective Date:</strong> 2026-05-17 <strong>Last Updated:</strong> 2026-11-08 <strong>Version:</strong> 1.2.0</p>
       <p>Published by <strong>Sudarshan Tech Labs</strong> | <a href="https://sudarshantechlabs.com">https://sudarshantechlabs.com</a> | sudarshantechlabs@gmail.com</p>
       <hr>
       <p>Method369 is a daily manifestation app for Android. Everything you write stays on your device. Sudarshan Tech Labs operates no backend server, collects no personal data, and receives nothing from the App — not even crash reports.</p>
@@ -128,6 +128,21 @@
       <tr><td>Device or other IDs</td><td>No</td><td>No</td><td>—</td></tr>
       </tbody></table>
       <p>Declare <strong>"No data collected"</strong> in the Play Console data safety form. The App has no network capability, so there is no transfer to disclose.</p>
+      <hr>
+      <h2>Recent Updates (Version 1.2.0 - November 8, 2026)</h2>
+      <ul>
+      <li><strong>Rewrote the policy from the app's source.</strong> The previous text described Firebase Analytics, Authentication, Firestore and Crashlytics collection, with retention tables. Method369 uses none of them: there is no Firebase dependency, no <code>google-services.json</code>, and no networking code at all.</li>
+      <li><strong>Stated plainly that the app cannot transmit data.</strong> It declares no <code>INTERNET</code> permission, verified against the merged manifest rather than the app's own file.</li>
+      <li><strong>Removed scaffold sections</strong> for location data, location sharing and account management, which did not apply to an app with no location and no account.</li>
+      <li><strong>Listed the permissions Android libraries merge in</strong> — <code>ACCESS_NETWORK_STATE</code>, <code>WAKE_LOCK</code>, <code>FOREGROUND_SERVICE</code> and <code>BIND_JOB_SERVICE</code> from WorkManager, <code>BIND_REMOTEVIEWS</code> from Glance, and <code>DUMP</code> — since the Play Store shows the merged set, not just the two the app declares.</li>
+      <li><strong>Gave the Play data safety answer directly:</strong> no data collected.</li>
+      </ul>
+      <hr>
+      <h2>Recent Updates (Version 1.1.0 - May 17, 2026)</h2>
+      <ul>
+      <li><strong>Aligned policy with the shared privacy-policy structure.</strong></li>
+      <li><strong>Clarified local ritual data and notification permissions.</strong></li>
+      </ul>
       <hr>
       <p><strong>This privacy policy complies with:</strong></p>
       <ul>

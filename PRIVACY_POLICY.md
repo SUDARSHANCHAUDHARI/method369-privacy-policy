@@ -2,7 +2,7 @@
 
 **Effective Date:** 2026-05-17
 **Last Updated:** 2026-11-08
-**Version:** 1.0.0
+**Version:** 1.2.0
 
 Published by **Sudarshan Tech Labs** | https://sudarshantechlabs.com | sudarshantechlabs@gmail.com
 
@@ -135,6 +135,23 @@ For privacy questions:
 | Device or other IDs | No | No | — |
 
 Declare **"No data collected"** in the Play Console data safety form. The App has no network capability, so there is no transfer to disclose.
+
+---
+
+## Recent Updates (Version 1.2.0 - November 8, 2026)
+
+- **Rewrote the policy from the app's source.** The previous text described Firebase Analytics, Authentication, Firestore and Crashlytics collection, with retention tables. Method369 uses none of them: there is no Firebase dependency, no `google-services.json`, and no networking code at all.
+- **Stated plainly that the app cannot transmit data.** It declares no `INTERNET` permission, verified against the merged manifest rather than the app's own file.
+- **Removed scaffold sections** for location data, location sharing and account management, which did not apply to an app with no location and no account.
+- **Listed the permissions Android libraries merge in** — `ACCESS_NETWORK_STATE`, `WAKE_LOCK`, `FOREGROUND_SERVICE` and `BIND_JOB_SERVICE` from WorkManager, `BIND_REMOTEVIEWS` from Glance, and `DUMP` — since the Play Store shows the merged set, not just the two the app declares.
+- **Gave the Play data safety answer directly:** no data collected.
+
+---
+
+## Recent Updates (Version 1.1.0 - May 17, 2026)
+
+- **Aligned policy with the shared privacy-policy structure.**
+- **Clarified local ritual data and notification permissions.**
 
 ---
 
