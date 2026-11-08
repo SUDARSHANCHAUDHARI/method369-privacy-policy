@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Method369 Privacy Policy</title>
-<style>
+  <style>
     :root { color-scheme: light dark; --bg: #f7f8fb; --fg: #18202f; --muted: #5c667a; --card: #ffffff; --border: #d9dee8; --link: #175bd6; }
     @media (prefers-color-scheme: dark) { :root { --bg: #111318; --fg: #edf1f7; --muted: #a8b0c0; --card: #191d25; --border: #303746; --link: #8bb4ff; } }
     body { margin: 0; background: var(--bg); color: var(--fg); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.6; }
@@ -71,13 +71,25 @@
       <p>The App also provides a home-screen widget showing your current progress. It reads the same local database and makes no network calls.</p>
       <hr>
       <h2>Permissions Explained</h2>
+      <p>The App itself asks for two permissions:</p>
       <table>
       <thead><tr><th>Permission</th><th>Why It Is Needed</th></tr></thead>
       <tbody>
       <tr><td><code>POST_NOTIFICATIONS</code></td><td>Show your three daily reminder notifications</td></tr>
       <tr><td><code>RECEIVE_BOOT_COMPLETED</code></td><td>Re-schedule your reminders after the device restarts</td></tr>
       </tbody></table>
-      <p>These are the only two permissions the App declares.</p>
+      <h3>Permissions added by Android libraries</h3>
+      <p>The finished app also carries permissions that the Android libraries it is built on declare for themselves. They appear in the app's permission list even though the App's own code never asks for them, so they are listed here for completeness:</p>
+      <table>
+      <thead><tr><th>Permission</th><th>Comes from</th><th>What it does</th></tr></thead>
+      <tbody>
+      <tr><td><code>ACCESS_NETWORK_STATE</code></td><td>WorkManager</td><td>Lets a library check whether a network exists. It does <strong>not</strong> grant network access, and without <code>INTERNET</code> nothing can be sent</td></tr>
+      <tr><td><code>WAKE_LOCK</code></td><td>WorkManager</td><td>Lets a scheduled reminder finish without the device sleeping mid-task</td></tr>
+      <tr><td><code>FOREGROUND_SERVICE</code>, <code>BIND_JOB_SERVICE</code></td><td>WorkManager</td><td>How Android runs scheduled background work</td></tr>
+      <tr><td><code>BIND_REMOTEVIEWS</code></td><td>Glance</td><td>Required to draw the home-screen widget</td></tr>
+      <tr><td><code>DUMP</code></td><td>a build-time library</td><td>Diagnostic permission. Android grants it only to system apps, so it has no effect here</td></tr>
+      </tbody></table>
+      <p><strong><code>INTERNET</code> is absent from the finished app too.</strong> Verified against the merged manifest, not just the App's own file — so the statement that the App cannot transmit your data holds for the shipped build.</p>
       <hr>
       <h2>Your Rights and Controls</h2>
       <ul>

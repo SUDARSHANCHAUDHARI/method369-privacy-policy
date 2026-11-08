@@ -65,12 +65,26 @@ The App also provides a home-screen widget showing your current progress. It rea
 
 ## Permissions Explained
 
+The App itself asks for two permissions:
+
 | Permission | Why It Is Needed |
 |---|---|
 | `POST_NOTIFICATIONS` | Show your three daily reminder notifications |
 | `RECEIVE_BOOT_COMPLETED` | Re-schedule your reminders after the device restarts |
 
-These are the only two permissions the App declares.
+### Permissions added by Android libraries
+
+The finished app also carries permissions that the Android libraries it is built on declare for themselves. They appear in the app's permission list even though the App's own code never asks for them, so they are listed here for completeness:
+
+| Permission | Comes from | What it does |
+|---|---|---|
+| `ACCESS_NETWORK_STATE` | WorkManager | Lets a library check whether a network exists. It does **not** grant network access, and without `INTERNET` nothing can be sent |
+| `WAKE_LOCK` | WorkManager | Lets a scheduled reminder finish without the device sleeping mid-task |
+| `FOREGROUND_SERVICE`, `BIND_JOB_SERVICE` | WorkManager | How Android runs scheduled background work |
+| `BIND_REMOTEVIEWS` | Glance | Required to draw the home-screen widget |
+| `DUMP` | a build-time library | Diagnostic permission. Android grants it only to system apps, so it has no effect here |
+
+**`INTERNET` is absent from the finished app too.** Verified against the merged manifest, not just the App's own file — so the statement that the App cannot transmit your data holds for the shipped build.
 
 ---
 
