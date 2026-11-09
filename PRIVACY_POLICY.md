@@ -80,9 +80,11 @@ The finished app also carries permissions that the Android libraries it is built
 |---|---|---|
 | `ACCESS_NETWORK_STATE` | WorkManager | Lets a library check whether a network exists. It does **not** grant network access, and without `INTERNET` nothing can be sent |
 | `WAKE_LOCK` | WorkManager | Lets a scheduled reminder finish without the device sleeping mid-task |
-| `FOREGROUND_SERVICE`, `BIND_JOB_SERVICE` | WorkManager | How Android runs scheduled background work |
-| `BIND_REMOTEVIEWS` | Glance | Required to draw the home-screen widget |
-| `DUMP` | a build-time library | Diagnostic permission. Android grants it only to system apps, so it has no effect here |
+| `FOREGROUND_SERVICE` | WorkManager | How Android runs scheduled background work |
+
+So the App declares two permissions and the finished build requests five.
+
+Three other permission names — `BIND_JOB_SERVICE`, `BIND_REMOTEVIEWS` and `DUMP` — also appear inside the merged manifest, but not as requests. They sit on the service and widget components that WorkManager and Glance contribute, as a requirement on anything trying to call those components. The App is not granted them and they do not appear in its permission list.
 
 **`INTERNET` is absent from the finished app too.** Verified against the merged manifest, not just the App's own file — so the statement that the App cannot transmit your data holds for the shipped build.
 
@@ -143,7 +145,7 @@ Declare **"No data collected"** in the Play Console data safety form. The App ha
 - **Rewrote the policy from the app's source.** The previous text described Firebase Analytics, Authentication, Firestore and Crashlytics collection, with retention tables. Method369 uses none of them: there is no Firebase dependency, no `google-services.json`, and no networking code at all.
 - **Stated plainly that the app cannot transmit data.** It declares no `INTERNET` permission, verified against the merged manifest rather than the app's own file.
 - **Removed scaffold sections** for location data, location sharing and account management, which did not apply to an app with no location and no account.
-- **Listed the permissions Android libraries merge in** — `ACCESS_NETWORK_STATE`, `WAKE_LOCK`, `FOREGROUND_SERVICE` and `BIND_JOB_SERVICE` from WorkManager, `BIND_REMOTEVIEWS` from Glance, and `DUMP` — since the Play Store shows the merged set, not just the two the app declares.
+- **Listed the permissions Android libraries merge in** — `ACCESS_NETWORK_STATE`, `WAKE_LOCK` and `FOREGROUND_SERVICE`, all from WorkManager — since the Play Store shows the merged set, not just the two the app declares. The app declares two and the finished build requests five. An earlier draft of this section also listed `BIND_JOB_SERVICE`, `BIND_REMOTEVIEWS` and `DUMP` as permissions the app carries; they appear in the merged manifest only as requirements guarding WorkManager's and Glance's own components, never as requests, so they are not in the app's permission list and have been removed.
 - **Gave the Play data safety answer directly:** no data collected.
 
 ---
